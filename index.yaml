@@ -2,14 +2,14 @@ apiVersion: v1
 entries:
   k8s-open-ports:
   - apiVersion: v2
-    created: "2022-03-24T19:33:51.679980182+01:00"
+    created: "2022-03-24T20:04:24.583802926+01:00"
     description: List all nodePorts in a k8s cluster
-    digest: 2022bd3a0bafd794e4cc0a53b0fd8f327035e599dbc66282485c5a1d4e95f26b
+    digest: 27cb4da8ae3140c293c87c5da304be248b1cd22312aa4b9602097090ef1529d4
     maintainers:
     - email: hectorgutifer@gmail.com
       name: Héctor Gutiérrez Fernández
     name: k8s-open-ports
     urls:
-    - https://hecklawert.github.io/k8s-get-open-ports/k8s-open-ports-0.0.1-alpha.1.tgz
+    - charts/k8s-open-ports-0.0.1-alpha.1.tgz
     version: 0.0.1-alpha.1
-generated: "2022-03-24T19:33:51.679034258+01:00"
+generated: "2022-03-24T20:04:24.582653509+01:00"
