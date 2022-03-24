@@ -7,7 +7,7 @@ entries:
     digest: 27cb4da8ae3140c293c87c5da304be248b1cd22312aa4b9602097090ef1529d4
     maintainers:
     - email: hectorgutifer@gmail.com
-      name: Héctor Gutiérrez Fernández
+      name: hector gutierrez
     name: k8s-open-ports
     urls:
     - charts/k8s-open-ports-0.0.1-alpha.1.tgz
