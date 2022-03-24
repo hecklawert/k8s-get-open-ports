@@ -1,7 +1,7 @@
 apiVersion: v2
 name: k8s-open-ports 
-version: 0.0.1-alpha.1
+version: 0.0.1
 description: List all nodePorts in a k8s cluster
 maintainers:
-  - name: Héctor Gutiérrez Fernández
+  - name: Hector Gutierrez Fernandez
     email: hectorgutifer@gmail.com
