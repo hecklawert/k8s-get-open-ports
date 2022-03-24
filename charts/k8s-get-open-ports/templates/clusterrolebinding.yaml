@@ -1,0 +1,16 @@
+{{ $serviceAccountName := include "base.serviceAccountName" $ }}
+{{ $serviceAccountNamespace := include "base.serviceAccountNamespace" $ }}
+{{ if .Values.serviceAccount.create }}
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+{{ template "base.metadata" . }}
+subjects:
+- kind: ServiceAccount
+  name: {{ $serviceAccountName }}
+  namespace: {{ $serviceAccountNamespace }}
+roleRef:
+  kind: ClusterRole
+  name: {{- include "base.fullname" $ | nindent 4 }}
+  apiGroup: ""
+{{ end }}

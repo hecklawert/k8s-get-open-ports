@@ -1,0 +1,11 @@
+cronjobs:
+  name: get-open-ports
+  spec:
+    successfulJobsHistoryLimit: 1
+    failedJobsHistoryLimit: 2
+    schedule: "*/1 * * * *"
+  ignorePorts:
+    - "30009"
+serviceAccount: 
+  create: true
+  #name: sa-jp-runner

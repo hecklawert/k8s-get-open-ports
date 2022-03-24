@@ -1,0 +1,9 @@
+{{ if .Values.serviceAccount.create }}
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+{{ template "base.metadata" . }}
+rules:
+- apiGroups: [""] # "" indicates the core API group
+  resources: ["services"]
+  verbs: ["get", "watch", "list"]
+{{ end }}

@@ -1,0 +1,44 @@
+{{- with .Values }}
+{{ $serviceAccount := include "base.serviceAccountName" $ }}
+{{ $name := include "base.fullname" $ }}
+{{ $whiteListPorts := include "helm-toolkit.utils.joinListWithComma" .cronjobs.ignorePorts }}
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: {{ $name }}
+  labels:
+    {{- include "base.labels" $ | nindent 4 }}
+spec:
+  successfulJobsHistoryLimit: {{ .cronjobs.spec.successfulJobsHistoryLimit | default 3 }}
+  failedJobsHistoryLimit: {{ .cronjobs.spec.failedJobsHistoryLimit | default 3 }}
+  concurrencyPolicy: Forbid
+  schedule: {{ if .cronjobs.spec.schedule }}"{{ .cronjobs.spec.schedule }}" {{ else }} "*/5 * * * *" {{ end }}
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          serviceAccountName: {{ $serviceAccount }}
+          containers:
+          - name: {{ .cronjobs.name | default "get-open-ports" }}
+            image: bitnami/kubectl:1.23.5
+            command:
+            - /bin/bash
+            - -c
+            - |
+              #!/bin/bash
+              {{ if .cronjobs.ignorePorts }}
+              input='[{{ $whiteListPorts }}]'
+              generatePorts () { 
+                while IFS= read -r obj; do
+                  IFS='-' read -r -a port <<< "$obj" 
+                  seq ${port[0]} ${port[-1]}
+                done < <(echo $1 | jq -c -r '.[]' )
+              }
+              whiteListPorts=$(generatePorts $input | jq -R -s -c 'split("\n") | [.[] | select(length > 0)|tonumber] ')
+              kubectl get svc --all-namespaces -o json |  jq -c --argjson whitelist $whiteListPorts '.items[] | {name:.metadata.name, namespace:.metadata.namespace, p:.spec.ports[] }| select( ( .p.nodePort != null ) and ( .p.nodePort as $p | $whitelist | index($p) | not ) ) '
+              {{ else }}
+              kubectl get svc --all-namespaces -o json |  jq -c '.items[] | {name:.metadata.name, namespace:.metadata.namespace, p:.spec.ports[] }| select( .p.nodePort != null )' 
+              {{ end }}
+              
+          restartPolicy: OnFailure
+{{- end }}
