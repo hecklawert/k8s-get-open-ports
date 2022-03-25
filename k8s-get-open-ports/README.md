@@ -27,7 +27,19 @@ To uninstall/delete the my-release deployment:
 helm delete my-release
 ```
 
+## Configuration
+
 The command removes all the Kubernetes components associated with the chart and deletes the release.
+
+| Parameter                                | Description                                                                                                | Default         |
+|------------------------------------------|------------------------------------------------------------------------------------------------------------|-----------------|
+| cronjobs.name                            | Name of generated containers                                                                               | get-open-ports  |
+| cronjobs.spec.successfulJobsHistoryLimit | Amount of successful jobs you want to keep in your cluster                                                 | 1               |
+| cronjobs.spec.failedJobsHistoryLimit     | Amount of failed jobs you want to keep in your cluster                                                     | 2               |
+| cronjobs.spec.schedule                   | Cron schedule expression You can generate your own expresions here                                         | " */1 * * * * " |
+| cronjobs.ignorePorts                     | List of ports you want to ignore in the report.  You can use single ports or ranges See examples below     | []              |
+| serviceAccount.create                    | Define if you want create a Service Account with the release or if you want use a existing Service Account | true            |
+| serviceAccount.name                      | Name of the Service Account                                                                                |                 |
 
 ### Example with custom values
 
