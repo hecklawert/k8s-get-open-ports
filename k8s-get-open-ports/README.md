@@ -28,3 +28,25 @@ helm delete my-release
 ```
 
 The command removes all the Kubernetes components associated with the chart and deletes the release.
+
+### Example with custom values
+
+Use a custom service connection:
+```yaml
+serviceAccount: 
+  create: false
+  name: my-service-account
+```
+
+Configure cronjobs:
+```yaml
+cronjobs:
+  name: get-open-ports
+  spec:
+    successfulJobsHistoryLimit: 1
+    failedJobsHistoryLimit: 2
+    schedule: "*/1 * * * *"
+  ignorePorts:
+    - "30009"
+	- "30010-30015"
+```
