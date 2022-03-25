@@ -37,7 +37,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | cronjobs.spec.successfulJobsHistoryLimit | Amount of successful jobs you want to keep in your cluster                                                 | 1               |
 | cronjobs.spec.failedJobsHistoryLimit     | Amount of failed jobs you want to keep in your cluster                                                     | 2               |
 | cronjobs.spec.schedule                   | Cron schedule expression You can generate your own expresions here                                         | " */1 * * * * " |
-| cronjobs.ignorePorts                     | List of ports you want to ignore in the report.  You can use single ports or ranges See examples below     | []              |
+| cronjobs.ignorePorts                     | List of ports you want to ignore in the report. You can use single ports or ranges _[See examples below](https://github.com/hecklawert/k8s-get-open-ports/blob/main/k8s-get-open-ports/README.md#example-with-custom-values)      | []              |
 | serviceAccount.create                    | Define if you want create a Service Account with the release or if you want use a existing Service Account | true            |
 | serviceAccount.name                      | Name of the Service Account                                                                                |                 |
 
