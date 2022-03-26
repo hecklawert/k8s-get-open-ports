@@ -1,6 +1,13 @@
 # k8s-get-open-ports Helm Chart
 
-* TODO
+k8s-get-open-ports project, is a monitoring system. It collects all [nodePorts](https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport) from the cluster where it resides at given intervals and show the result at JSON format in the logs of the job.
+
+This chart bootstraps k8s-get-open-ports on a [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+
+## Prerequisites
+
+- Kubernetes 1.16+
+- Helm 3+
 
 ## Get Repo Info
 
