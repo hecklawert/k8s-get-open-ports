@@ -34,9 +34,9 @@ To uninstall/delete the my-release deployment:
 helm delete my-release
 ```
 
-## Configuration
-
 The command removes all the Kubernetes components associated with the chart and deletes the release.
+
+## Configuration
 
 | Parameter                                | Description                                                                                                | Default         |
 |------------------------------------------|------------------------------------------------------------------------------------------------------------|-----------------|
