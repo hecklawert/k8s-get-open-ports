@@ -1,6 +1,6 @@
 # k8s-get-open-ports Helm Chart
 
-k8s-get-open-ports project, is a monitoring system. It collects all [nodePorts](https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport) from the cluster where it resides at given intervals and show the result at JSON format in the logs of the job.
+k8s-get-open-ports project, is a monitoring system. It collects all [nodePorts](https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport) from the cluster where it resides at given intervals and show the result in JSON format in the logs of the job.
 
 This chart bootstraps k8s-get-open-ports on a [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
@@ -84,3 +84,25 @@ cronjobs:
 ## Enhance k8s-get-open-ports with data collectors
 
 You could implement persistance of the reports or metrics using data collectors as [FileBeat](https://www.elastic.co/es/beats/filebeat) or [Fluentd](https://www.fluentd.org/). These tools allows you to setup persistance or even decode the Json at the reports to send it to an [ElasticSearch](https://www.elastic.co/es/what-is/elasticsearch) as indexes, ready to be displayed with Dashboarding tools as [Grafana](https://grafana.com/) or [Kibana](https://www.elastic.co/es/kibana/).
+
+#### Example of filebeat configuration:
+```
+filebeat.autodiscover:
+  providers:
+    - type: kubernetes
+      node: ${NODE_NAME}
+      templates:
+        - condition:
+            contains:
+              kubernetes.container.name: "get-open-ports"
+          config:
+            - type: container
+              paths:
+                - "/var/log/containers/*-${data.kubernetes.container.id}.log"
+              json.keys_under_root: true
+              json.add_error_key: true
+output.elasticsearch:
+  host: '${NODE_NAME}'
+  hosts: '${ELASTICSEARCH_HOSTS:elasticsearch-master:9200}'
+```
+This configuration decodes report's Json as indexes and send it to an [ElasticSearch](https://www.elastic.co/es/what-is/elasticsearch) .
