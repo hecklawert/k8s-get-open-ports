@@ -1,4 +1,5 @@
 # k8s-get-open-ports Helm Chart
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 k8s-get-open-ports project, is a monitoring system. It collects all [nodePorts](https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport) from the cluster where it resides at given intervals and show the result in JSON format in the logs of the job.
 
@@ -105,4 +106,13 @@ output.elasticsearch:
   host: '${NODE_NAME}'
   hosts: '${ELASTICSEARCH_HOSTS:elasticsearch-master:9200}'
 ```
-This configuration decodes report's Json as indexes and send it to an [ElasticSearch](https://www.elastic.co/es/what-is/elasticsearch) .
+This configuration decodes reports Json as indexes and send it to an [ElasticSearch](https://www.elastic.co/es/what-is/elasticsearch).
+
+## License
+
+<!-- Keep full URL links to repo files because this README syncs from main to gh-pages.  -->
+[Apache 2.0 License](https://github.com/hecklawert/k8s-get-open-ports/blob/main/LICENSE).
+
+## Author
+
+Héctor Gutiérrez Fernández
