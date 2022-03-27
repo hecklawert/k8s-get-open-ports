@@ -86,7 +86,7 @@ cronjobs:
 You could implement persistance of the reports or metrics using data collectors as [FileBeat](https://www.elastic.co/es/beats/filebeat) or [Fluentd](https://www.fluentd.org/). These tools allows you to setup persistance or even decode the Json at the reports to send it to an [ElasticSearch](https://www.elastic.co/es/what-is/elasticsearch) as indexes, ready to be displayed with Dashboarding tools as [Grafana](https://grafana.com/) or [Kibana](https://www.elastic.co/es/kibana/).
 
 #### Example of filebeat configuration:
-```
+```yaml
 filebeat.autodiscover:
   providers:
     - type: kubernetes
