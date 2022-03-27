@@ -11,7 +11,7 @@ This chart bootstraps k8s-get-open-ports on a [Kubernetes](http://kubernetes.io)
 - You could change the interval of the report as you desire
 - Ability of setup a whitelist of ports to ignore them on the report
 - Easy to export to metrics system as [ElasticSearch](https://www.elastic.co/es/what-is/elasticsearch)
-- No support reports persistance. If you need this feature you could use third-party data collector tools like [FileBeat](https://www.elastic.co/es/beats/filebeat) or [Fluentd](https://www.fluentd.org/). See [Enhance k8s-get-open-ports with data collectors]() 
+- No support of reports persistance. If you need this feature you could use third-party data collector tools like [FileBeat](https://www.elastic.co/es/beats/filebeat) or [Fluentd](https://www.fluentd.org/). See [Enhance k8s-get-open-ports with data collectors]() 
 
 ## Prerequisites
 
