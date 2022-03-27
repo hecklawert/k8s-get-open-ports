@@ -48,7 +48,7 @@ The command removes all the Kubernetes components associated with the chart and 
 | serviceAccount.create                    | Define if you want create a Service Account with the release or if you want use a existing Service Account | true            |
 | serviceAccount.name                      | Name of the Service Account                                                                                |                 |
 
-> Please, be aware that if you set `serviceAccount.create` to `false` you must provide a [Service Account](https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/) that could have enought permissions to get and list all services in the cluster. Also, the [Service Account](https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/) MUST be on the same Namespace since CronJobs can only use [Service Accounts](https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/) in the same namespace.
+> Please, be aware that if you set `serviceAccount.create` to `false` you must provide a [Service Account](https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/) with enough permissions to get and list all services in the cluster. Also, the [Service Account](https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/) MUST be on the same Namespace since CronJobs can only use [Service Accounts](https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/) in the same namespace.
 
 ### Example with custom values
 
