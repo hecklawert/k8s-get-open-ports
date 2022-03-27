@@ -4,6 +4,15 @@ k8s-get-open-ports project, is a monitoring system. It collects all [nodePorts](
 
 This chart bootstraps k8s-get-open-ports on a [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
+## Features
+(or rather: limitations)
+
+- Reports all [nodePorts](https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport) from the cluster in Json format
+- You could change the interval of the report as you desire
+- Ability of setup a whitelist of ports to ignore them on the report
+- Easy to export to metrics system as [ElasticSearch](https://www.elastic.co/es/what-is/elasticsearch)
+- No support of persistance of the reports. If you need this feature you could use third-party data collector tools like [FileBeat](https://www.elastic.co/es/beats/filebeat) or [Fluentd](https://www.fluentd.org/). See [Enhance k8s-get-open-ports with data collectors]() 
+
 ## Prerequisites
 
 - Kubernetes 1.16+
@@ -71,3 +80,7 @@ cronjobs:
     - "30009"
     - "30010-30015"
 ```
+
+## Enhance k8s-get-open-ports with data collectors
+
+You could implement persistance of the reports or metrics using data collectors as [FileBeat](https://www.elastic.co/es/beats/filebeat) or [Fluentd](https://www.fluentd.org/). These tools allows you to setup persistance or even decode the Json at the reports to send it to an [ElasticSearch](https://www.elastic.co/es/what-is/elasticsearch) as indexes, ready to be displayed with Dashboarding tools as [Grafana](https://grafana.com/) or [Kibana](https://www.elastic.co/es/kibana/).
