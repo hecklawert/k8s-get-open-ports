@@ -62,7 +62,7 @@ The command removes all the Kubernetes components associated with the chart and 
 
 ### Example with custom values
 
-Use a custom service connection:
+Use a custom service account:
 ```yaml
 serviceAccount: 
   create: false
