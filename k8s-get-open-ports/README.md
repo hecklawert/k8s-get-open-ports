@@ -1,9 +1,9 @@
 # k8s-get-open-ports Helm Chart
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-k8s-get-open-ports project, is a monitoring system. It collects all [nodePorts](https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport) from the cluster where it resides at given intervals and show the result in JSON format in the logs of the job.
+k8s-get-open-ports project, is a monitoring system. It collects all [nodePorts](https://kubernetes.io/docs/concepts/services-networking/service/#type-nodeport) from the cluster where it resides at given intervals using a [Cronjob](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/) and show the result in JSON format in the logs of the job.
 
-This chart bootstraps k8s-get-open-ports on a [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart deploys k8s-get-open-ports on a [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 ## Features
 (or rather: limitations)
